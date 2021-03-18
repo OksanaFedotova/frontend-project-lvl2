@@ -27,4 +27,5 @@ export default (fileName1, fileName2) => {
   const file1 = fs.readFileSync(path.resolve(fileName1));
   const file2 = fs.readFileSync(path.resolve(fileName2));
   console.log(getDiff(file1, file2));
+  return getDiff(file1, file2);
 };
