@@ -1,6 +1,6 @@
-import _ from "lodash";
-import fs from "fs";
-import path from "path";
+import _ from 'lodash';
+import fs from 'fs';
+import path from 'path';
 
 const getDiff = (fileJson1, fileJson2) => {
   const file1 = JSON.parse(fileJson1);
@@ -11,20 +11,17 @@ const getDiff = (fileJson1, fileJson2) => {
   const result = union.flatMap((key) => {
     if (!_.has(file1, key)) {
       return `  + ${key}: ${file2[key]}`;
-    } else {
-      if (!_.has(file2, key)) {
-        return `  - ${key}: ${file1[key]}`;
-      } else {
-        if (file2[key] === file1[key]) {
-          return `    ${key}: ${file1[key]}`;
-        } else {
-          return [`  - ${key}: ${file1[key]}`, `  + ${key}: ${file2[key]}`]
-        }
-      }
     }
+    if (!_.has(file2, key)) {
+      return `  - ${key}: ${file1[key]}`;
+    }
+    if (file2[key] === file1[key]) {
+      return `    ${key}: ${file1[key]}`;
+    }
+    return [`  - ${key}: ${file1[key]}`, `  + ${key}: ${file2[key]}`];
   });
-  return `{\n${result.join('\n')}\n}`
-}
+  return `{\n${result.join('\n')}\n}`;
+};
 
 export default (fileName1, fileName2) => {
   const file1 = fs.readFileSync(path.resolve(fileName1));
