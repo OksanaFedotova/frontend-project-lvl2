@@ -1,0 +1,10 @@
+{
+  - author: John Doe
+  + author: Ivan
+    keywords: null
+  - language: en
+  + language: ru
+    subtitle: 
+    timezone: 
+    title: Hexo
+}

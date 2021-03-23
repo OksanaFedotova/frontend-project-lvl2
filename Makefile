@@ -2,7 +2,7 @@ install:
 	npm install
 gendiff:
 	node bin/gendiff.js -h
-make lint:
+lint:
 	npx eslint .
-make test:
+test:
 	NODE_OPTIONS='--experimental-vm-modules --no-warnings' npx jest

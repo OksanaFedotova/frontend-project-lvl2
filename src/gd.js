@@ -1,10 +1,7 @@
 import _ from 'lodash';
-import fs from 'fs';
-import path from 'path';
+import parseFile from './parsers.js';
 
-const getDiff = (fileJson1, fileJson2) => {
-  const file1 = JSON.parse(fileJson1);
-  const file2 = JSON.parse(fileJson2);
+const getDiff = (file1, file2) => {
   const keys1 = Object.keys(file1);
   const keys2 = Object.keys(file2);
   const union = _.union(keys1, keys2).sort();
@@ -24,8 +21,7 @@ const getDiff = (fileJson1, fileJson2) => {
 };
 
 export default (fileName1, fileName2) => {
-  const file1 = fs.readFileSync(path.resolve(fileName1));
-  const file2 = fs.readFileSync(path.resolve(fileName2));
-  console.log(getDiff(file1, file2));
+  const file1 = parseFile(fileName1);
+  const file2 = parseFile(fileName2);
   return getDiff(file1, file2);
 };

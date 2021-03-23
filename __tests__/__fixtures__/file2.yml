@@ -1,0 +1,12 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: Hexo
+subtitle: ''
+keywords: 
+author: Ivan 
+language: ru
+timezone: ''
+
