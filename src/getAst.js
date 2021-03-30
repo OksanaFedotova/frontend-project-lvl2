@@ -44,7 +44,6 @@ const getAst = (file1, file2) => {
     }
     return getNode(file1, file2, key);
   });
-  //console.log(ast);
   return ast;
 };
 export default getAst;
