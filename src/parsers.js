@@ -1,10 +1,6 @@
-import path from 'path';
-import fs from 'fs';
 import yaml from 'js-yaml';
 
-const parseFile = (fileName) => {
-  const data = fs.readFileSync(path.resolve(fileName));
-  const extension = path.extname(fileName);
+const getParser = (extension) => {
   let parse;
   switch (extension) {
     case '.json':
@@ -14,9 +10,9 @@ const parseFile = (fileName) => {
       parse = yaml.load;
       break;
     default:
-      throw new Error('незнакомый тип файла');
+      throw new Error('Unknown file type!');
   }
-  return parse(data);
+  return parse;
 };
 
-export default parseFile;
+export default getParser;

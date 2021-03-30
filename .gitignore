@@ -1,4 +1,6 @@
 node_modules
 .DS_Store
-file1
-file2
+file1.json
+file2.json
+file1.yml
+file2.yml
