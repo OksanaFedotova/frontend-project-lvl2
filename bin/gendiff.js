@@ -6,7 +6,9 @@ import genDiff from '../src/getDiff.js';
 commander
   .version('0.0.1')
   .arguments('<filepath1> <filepath2>')
-  .option('-f, --format [type]', 'output format')
+  .option('-f, --format <format>', 'output format')
   .description('Compares two configuration files and shows a difference.')
-  .action(genDiff);
+  .action((filepath1, filepath2, options) => {
+    console.log(genDiff(filepath1, filepath2, options.format));
+  });
 commander.parse();

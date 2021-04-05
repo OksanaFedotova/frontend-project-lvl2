@@ -9,26 +9,15 @@ const __dirname = dirname(__filename);
 const getFixturePath = (filename) => join(__dirname, '..', '__tests__', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-const file1Json = getFixturePath('file1.json');
-const file2Json = getFixturePath('file2.json');
-const outputJson = readFile('outputJson.txt');
-const file1TreeJson = getFixturePath('file1Tree.json');
-const file2TreeJson = getFixturePath('file2Tree.json');
-const outputTreeJson = readFile('outputTreeJson.txt');
-describe('gendiffJson', () => {
-  test('plainJson', () => {
-    expect(genDiff(file1Json, file2Json)).toEqual(outputJson);
-  });
+const outputFormats = [['default'], ['stylish'], ['plain']];
+const inputData = [['Flat', 'json'], ['Tree', 'json'], ['Flat', 'yml'], ['Tree', 'yml']];
 
-  test('treeJson', () => {
-    expect(genDiff(file1TreeJson, file2TreeJson)).toEqual(outputTreeJson);
+describe.each(outputFormats)('genDiff for %s', (outputFormat) => {
+  test.each(inputData)('%s', (nesting, extension) => {
+    const file1 = getFixturePath(`file1${nesting}.${extension}`);
+    const file2 = getFixturePath(`file2${nesting}.${extension}`);
+    const formatter = outputFormat === 'default' ? '' : outputFormat;
+    const output = readFile(`output${nesting}_${formatter}.txt`);
+    expect(genDiff(file1, file2, formatter)).toEqual(output);
   });
 });
-/*
-const file1Yaml = getFixturePath('file1.yml');
-const file2Yaml = getFixturePath('file2.yml');
-const outputYml = readFile('outputYml.txt');
-test('gendiffYml', () => {
-  expect(genDiff(file1Yaml, file2Yaml)).toEqual(outputYml);
-});
-*/

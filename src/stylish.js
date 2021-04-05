@@ -8,7 +8,6 @@ const stringify = (value, replacer = ' ', spacesCount = 1) => {
 
     const indentSize = depth * spacesCount;
     const currentIndent = replacer.repeat(indentSize);
-    const bracketIndent = replacer.repeat(indentSize);
 
     const lines = Object
       .entries(currentValue)
@@ -17,7 +16,7 @@ const stringify = (value, replacer = ' ', spacesCount = 1) => {
     return [
       '{',
       ...lines,
-      `${bracketIndent}}`,
+      `${currentIndent}}`,
     ].join('\n');
   };
 
@@ -26,10 +25,8 @@ const stringify = (value, replacer = ' ', spacesCount = 1) => {
 
 const stylish = (ast) => {
   const iter = (diff, depth) => {
-    const initialIndent = '    '.repeat(depth);
-    const indent = initialIndent.substring(0, initialIndent.length - 2);
-    const bracketIndent = '    '.repeat(depth - 1);
-    const outputLines = diff.flatMap((node) => {
+    const indent = '    '.repeat(depth - 1);
+    const output = diff.flatMap((node) => {
       const {
         name,
         value,
@@ -37,24 +34,25 @@ const stylish = (ast) => {
         type,
         children,
       } = node;
-      const line = `${name}: ${stringify(value, ' ', initialIndent.length)}`;
-      const changedLine = `${name}: ${stringify(newValue, ' ', initialIndent.length)}`;
+      const line = `${name}: ${stringify(value, ' ', 4 * depth)}`;
+      const changedLine = `${name}: ${stringify(newValue, ' ', 4 * depth)}`;
       switch (type) {
         case 'added':
-          return `${indent}+ ${line}`;
+          return `  + ${line}`;
         case 'deleted':
-          return `${indent}- ${line}`;
+          return `  - ${line}`;
         case 'changed':
-          return `${indent}- ${line}\n${indent}+ ${changedLine}`;
+          return `  - ${line}\n${indent}  + ${changedLine}`;
         case 'changed_object':
-          return `${indent}  ${name}: ${iter(children, depth + 1)}`;
+          return `    ${name}: ${iter(children, depth + 1)}`;
         case 'unchanged':
-          return `${indent}  ${line}`;
+          return `    ${line}`;
         default:
           throw new Error(`Unknown type: '${type}'!`);
       }
     });
-    return `{\n${outputLines.join('\n')}\n${bracketIndent}}`;
+    const result = output.map((str) => indent + str);
+    return `{\n${result.join('\n')}\n${indent}}`;
   };
   return iter(ast, 1);
 };
