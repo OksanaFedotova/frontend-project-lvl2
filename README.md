@@ -15,13 +15,13 @@
 4. Справка по утилите: gendiff -h
 
 ### Сравнение двух плоских файлов, формат - json, формат вывода - по умолчанию (stylish)
-[![asciicast](https://asciinema.org/a/xh96eVi8bnWaArxgNUOonH7X2)] https://asciinema.org/a/xh96eVi8bnWaArxgNUOonH7X2
+[![asciicast](https://asciinema.org/a/xh96eVi8bnWaArxgNUOonH7X2.svg)] https://asciinema.org/a/xh96eVi8bnWaArxgNUOonH7X2
 
 ### Сравнение двух файлов со вложенной структурой, формат - yml, формат вывода - по умолчанию (stylish)
-[![asciicast](https://asciinema.org/a/K4NhRrKwDeEjmKKfG60c2qYqy)] https://asciinema.org/a/K4NhRrKwDeEjmKKfG60c2qYqy
+[![asciicast](https://asciinema.org/a/K4NhRrKwDeEjmKKfG60c2qYqy.svg)] https://asciinema.org/a/K4NhRrKwDeEjmKKfG60c2qYqy
 
 ### Сравнение двух файлов со вложенной структурой, формат - json, формат вывода - plain
-[![asciicast](https://asciinema.org/a/rHiUtD8YUbNKvHLJSAhI5xbiA)] https://asciinema.org/a/rHiUtD8YUbNKvHLJSAhI5xbiA
+[![asciicast](https://asciinema.org/a/rHiUtD8YUbNKvHLJSAhI5xbiA.svg)] https://asciinema.org/a/rHiUtD8YUbNKvHLJSAhI5xbiA
 
 ### Сравнение двух файлов со вложенной структурой, формат - yml, формат вывода - json
-[![asciicast](https://asciinema.org/a/dAKXDUFRrBkh7AnGh6xNp2lLT)] https://asciinema.org/a/dAKXDUFRrBkh7AnGh6xNp2lLT
+[![asciicast](https://asciinema.org/a/dAKXDUFRrBkh7AnGh6xNp2lLT.svg)] https://asciinema.org/a/dAKXDUFRrBkh7AnGh6xNp2lLT
