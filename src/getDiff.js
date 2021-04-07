@@ -2,8 +2,9 @@ import path from 'path';
 import fs from 'fs';
 import getParser from './parsers.js';
 import getAst from './getAst.js';
-import stylish from './stylish.js';
-import plain from './plain.js';
+import stylish from './formatters/stylish.js';
+import plain from './formatters/plain.js';
+import json from './formatters/json.js';
 
 const getFile = (fileName) => {
   const data = fs.readFileSync(path.resolve(fileName));
@@ -18,6 +19,9 @@ export default (fileName1, fileName2, format) => {
   const ast = getAst(file1, file2);
   if (format === 'plain') {
     return plain(ast);
+  }
+  if (format === 'json') {
+    return json(ast);
   }
   return stylish(ast);
 };
