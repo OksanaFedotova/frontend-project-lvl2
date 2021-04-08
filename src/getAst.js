@@ -33,8 +33,8 @@ const getNode = (node1, node2, key) => {
 const isObject = (variable) => _.isObject(variable) && !_.isArray(variable);
 
 const getAst = (file1, file2) => {
-  const keys = _.union(_.keys(file1), _.keys(file2)).sort();
-  const ast = keys.flatMap((key) => {
+  const keys = _.union(_.keys(file1), _.keys(file2));
+  const ast = _.sortBy(keys).flatMap((key) => {
     if (isObject(file1[key]) && isObject(file2[key])) {
       return {
         name: key,
