@@ -8,12 +8,16 @@
 Сli приложение, сравнивающее два файла в формате json или yml. Вывод возможен в одном из трёх форматов: plain text, stylish и json.
 
 ### Инструкция по установке: 
-
-1. Клонировать репозиторий: git clone https://github.com/OksanaFedotova/frontend-project-lvl2.git
-2. В командной строке в соответствующей директории выполнить команду make, которая по умолчанию выполнит npm install
-3. Выполнить команду npm link
-4. Справка по утилите: gendiff -h
-
+```
+# Клонировать
+git clone https://github.com/OksanaFedotova/frontend-project-lvl2.git
+# Установить приложение
+make install
+# Установить симлинк для приложения 
+npm link
+# Справка по утилите
+gendiff -h
+```
 ### Сравнение двух плоских файлов, формат - json, формат вывода - по умолчанию (stylish)
 ![asciicast](https://asciinema.org/a/xh96eVi8bnWaArxgNUOonH7X2.svg) https://asciinema.org/a/xh96eVi8bnWaArxgNUOonH7X2
 
