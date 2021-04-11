@@ -1,10 +1,6 @@
 name: test-coverage
 on:
-  push:
-    branches:
-      - master
-    tags:
-       - '**'
+  - push
 
 jobs:
   test:
@@ -15,18 +11,11 @@ jobs:
     name: test/node ${{ matrix.node }}/${{ matrix.platform }}
     runs-on: ${{ matrix.platform }}
     steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-node@master
+    - uses: actions/checkout@v2
       with:
         node-version: ${{ matrix.node }}
-  coverage:
-    needs: [ test ]
-    name: coverage
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-node@master
-      env:
+  run: |
+          make test
+env:
         CC_TEST_REPORTER_ID: 512acd67f63b6c135f8ae2f8e9c1ec9fe655c772f8af2916ee8369b71e6a85ff
-      with:
-        coverageCommand: test coverage
+ 
