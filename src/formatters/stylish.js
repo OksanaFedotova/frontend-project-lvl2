@@ -28,11 +28,7 @@ const stylish = (ast) => {
     const indent = '    '.repeat(depth - 1);
     const output = diff.flatMap((node) => {
       const {
-        name,
-        value,
-        newValue,
-        type,
-        children,
+        name, value, newValue, type, children,
       } = node;
       const line = `${name}: ${stringify(value, ' ', 4 * depth)}`;
       const changedLine = `${name}: ${stringify(newValue, ' ', 4 * depth)}`;

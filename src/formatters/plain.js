@@ -14,11 +14,7 @@ const plain = (ast) => {
   const iter = (diff, currentName = '') => {
     const result = diff.flatMap((node) => {
       const {
-        name,
-        value,
-        newValue,
-        type,
-        children,
+        name, value, newValue, type, children,
       } = node;
       const line = `Property '${currentName}${name}'`;
       switch (type) {

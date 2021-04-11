@@ -1,10 +1,14 @@
 import yaml from 'js-yaml';
 
 const getParser = (extension) => {
-  if (extension === '.json') {
-    return JSON.parse;
+  switch (extension) {
+    case '.json':
+      return JSON.parse;
+    case '.yml':
+      return yaml.load;
+    default:
+      throw new Error('unknown extension');
   }
-  return yaml.load;
 };
 
 export default getParser;
