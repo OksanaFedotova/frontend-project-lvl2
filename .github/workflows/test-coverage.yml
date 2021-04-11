@@ -13,9 +13,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        node-version: ${{ matrix.node }}
-  run: |
-          make test
-env:
+        node-version: ${{ matrix.node }} 
+    - run: make test
+    env:
         CC_TEST_REPORTER_ID: 512acd67f63b6c135f8ae2f8e9c1ec9fe655c772f8af2916ee8369b71e6a85ff
  
