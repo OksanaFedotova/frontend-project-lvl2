@@ -1,4 +1,4 @@
-name: build
+name: test-coverage
 on:
   push:
     branches:
@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         platform: [ ubuntu-latest, macOS-latest ]
-        node: [ '14', '12' ]
+        node: [ '12', '10' ]
     name: test/node ${{ matrix.node }}/${{ matrix.platform }}
     runs-on: ${{ matrix.platform }}
     steps:
@@ -42,9 +42,8 @@ jobs:
     - run: npm install -g yarn
     - run: yarn install
     - run: yarn build
-    - uses: paambaati/codeclimate-action@v2.7.2
+    - uses: paambaati/codeclimate-action@v2.2.4
       env:
-        CC_TEST_REPORTER_ID: ${{ secrets.512acd67f63b6c135f8ae2f8e9c1ec9fe655c772f8af2916ee8369b71e6a85ff }}
+        CC_TEST_REPORTER_ID: 512acd67f63b6c135f8ae2f8e9c1ec9fe655c772f8af2916ee8369b71e6a85ff
       with:
-        coverageCommand: yarn run coverage
-        debug: true
+        coverageCommand: yarn coverage
