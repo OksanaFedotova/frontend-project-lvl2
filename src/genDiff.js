@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import getParser from './parsers.js';
 import getAst from './getAst.js';
-import getFormatter from './getFormatter';
+import getFormatter from './getFormatter.js';
 
 const getObj = (fileName) => {
   const data = fs.readFileSync(path.resolve(fileName));
